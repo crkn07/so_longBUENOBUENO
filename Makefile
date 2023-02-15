@@ -13,7 +13,7 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 MLX_FLAGS = -framework OpenGL -framework AppKit
 LIBFT = ./libft/libft.a
 MLX = ./mlx/libmlx.a
@@ -22,7 +22,7 @@ SRC =	collectable.c covers_change.c draw_sprites.c print_enemy.c \
 		enemy_config.c error.c moments_tester.c smaller_mlx.c img_init.c \
 		launch_game.c keyboard_movement.c map_coord.c print_map.c \
 		check_map.c read_map.c check_collision.c move_dir.c \
-		move_init.c print_player.c reset_game.c step_count.c \
+		move_init.c print_player.c reset_game.c step_count.c check_rute.c \
 		util_lst.c \
 
 OBJS = $(SRC:.c=.o)

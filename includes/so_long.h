@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:51:09 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 17:50:23 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:54:15 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s_game
 	t_spr		enemy;
 	t_coord		dir2coord[5];
 	t_map		maps;
-	t_flags		flag;
+	t_flags		 flag;
 }				t_game;
 
 void	*ft_xpm_to_img(t_game *game, char *str);

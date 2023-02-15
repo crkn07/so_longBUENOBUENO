@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 17:52:31 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:58:34 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	load_map(t_game *game, char *file)
 		i++;
 		free(line);
 	}
+	mapcopy(game);
 	free(line);
 	close(fd);
 }
@@ -108,6 +109,8 @@ void	read_file(t_game *game, char *file)
 	load_map(game, file);
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
+	if (path_ok(game) == FALSE)
+		error_message("no se puede");
 	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }
