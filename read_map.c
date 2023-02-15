@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/15 12:58:34 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:52:13 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,21 @@ void	alloc_map_mem(t_game *game, int fd)
 	int	i;
 	
 	num_max_rowsandcols(game, fd);
-	game->maps.coord = (char **)malloc(sizeof(char *) * (game->maps.rows));
+	game->maps.coord = (char **)ft_calloc((game->maps.rows), sizeof(char *));
 	i = 0;
 	while (i < game->maps.rows)	/* Checking if the current row is less than the total number of rows. */
 	{
-		game->maps.coord[i] = (char *)malloc(sizeof(char) * (game->maps.cols));
+		game->maps.coord[i] = (char *)ft_calloc((game->maps.cols), sizeof(char));
 		i++;
 	}
 }
 
-
-
+/**
+ * It reads the map file and stores the map in a 2D array
+ * 
+ * @param game the game struct
+ * @param file the name of the file to be opened
+ */
 void	load_map(t_game *game, char *file)
 {
 	int		fd;
@@ -88,13 +92,16 @@ void	load_map(t_game *game, char *file)
 				game->maps.coord[i][j] = line[j];
 			else
 				error_message("Invalid components in map.ber\n");
+			//printf("%c", line[j]);
+			//printf("%c", game->maps.coord[i][j]);
 			j++;
 		}
 		i++;
 		free(line);
 	}
-	mapcopy(game);
 	free(line);
+	copymap(game);
+	copymap2(game);
 	close(fd);
 }
 
@@ -109,8 +116,12 @@ void	read_file(t_game *game, char *file)
 	load_map(game, file);
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
-	if (path_ok(game) == FALSE)
+	if (valid_path_exit(game) == FALSE)
 		error_message("no se puede");
+	//free(game->maps.mapcopy);
+	if (valid_path_collect(game) == FALSE)
+		error_message("no se puede col");
+	//free(game->maps.mapcopy2);
 	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }

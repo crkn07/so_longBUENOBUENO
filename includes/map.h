@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 18:14:15 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 18:39:07 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:52:43 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_map
 	int		cols;
 	char	**coord;
 	char	**mapcopy;
+	char	**mapcopy2;
 	char	*file;
 	t_compo	cnt;
 }			t_map;
@@ -55,7 +56,10 @@ int		open_file(char *filename);
 void	map_load(t_game *game, char *filename);
 void	draw_comp_by_coord(t_game *game);
 void	file_read(t_game *game, char *filename);
-int		path_ok(t_game *game);
-int		mapcopy(t_game *game);
+int		valid_path_exit(t_game *game);
+int		copymap(t_game *game);
+int		open_fd(char *file);
+int		copymap2(t_game *game);
+int		valid_path_collect(t_game *game);
 
 #endif

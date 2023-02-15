@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_rute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/15 12:59:32 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:55:09 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,22 @@ void	aroundplayer(t_game *game, int x, int y)
  * 
  * @return the value of the last expression.
  */
-int	exitcheck(t_game *game)
+int	reach_exit(t_game *game)
 {
 	int	x;
 	int	y;
 
 	x = 0;
-	while (game->maps.mapcopy[x])
+	while (x < game->maps.rows)
 	{
 		y = 0;
-		while (game->maps.mapcopy[x][y])
+		while (y < game->maps.cols)
 		{
 			if ((game->maps.mapcopy[x][y] == 'E' && game->maps.mapcopy[x][y + 1] == 'P')
 			|| (game->maps.mapcopy[x][y] == 'E' && game->maps.mapcopy[x][y - 1] == 'P')
 			|| (game->maps.mapcopy[x][y] == 'E' && game->maps.mapcopy[x - 1][y] == 'P')
 			|| (game->maps.mapcopy[x][y] == 'E' && game->maps.mapcopy[x + 1][y] == 'P'))
-				return (1);
+				return (TRUE);
 			y++;
 		}
 		x++;
@@ -87,30 +87,31 @@ int	checkplayer(t_game *game, int x, int y)
  * 
  * @return a boolean value.
  */
-int	mapcopy(t_game *game)
+int	copymap(t_game *game)
 {
 	int	x;
 	int	y;
 
-	game->maps.mapcopy = ft_calloc(game->maps.rows + 1, (sizeof(char *)));
+	game->maps.mapcopy = (char**)ft_calloc(game->maps.rows, (sizeof(char *)));
 	if (!game->maps.mapcopy)
 		return (0);
 	x = 0;
 	while (x < game->maps.rows)
 	{
-		game->maps.mapcopy[x] = ft_calloc(game->maps.cols + 1, sizeof(char));
+		game->maps.mapcopy[x] = (char *)ft_calloc(game->maps.cols, sizeof(char));
 		if (!game->maps.mapcopy)
 			return (0);
-		ft_putstr_fd("aqui entra", 1);
 		y = 0;
-		while (game->maps.coord[x][y])
-			{
-				game->maps.mapcopy[x][y] = game->maps.coord[x][y];
-				y++;
-			}
+		while (y < game->maps.cols)
+		{
+			game->maps.mapcopy[x][y] = game->maps.coord[x][y];
+			//printf("%c", game->maps.mapcopy[x][y]);
+			//ft_putstr_fd("\n", 1);
+			//printf("%c", game->maps.coord[x][y]);
+			y++;
+		}
 		x++;
 	}
-	game->maps.mapcopy[x] = 0;
 	return (TRUE);
 }
 
@@ -121,7 +122,7 @@ int	mapcopy(t_game *game)
  * 
  * @return a boolean value.
  */
-int	path_ok(t_game *game)
+int	valid_path_exit(t_game *game)
 {
 	int	x;
 	int	y;
@@ -130,7 +131,7 @@ int	path_ok(t_game *game)
 	while (x < game->maps.rows)
 	{
 		y = 0;
-		while (game->maps.mapcopy[x][y])
+		while (y < game->maps.cols)
 		{
 			if (checkplayer(game, x, y))
 			{
@@ -140,12 +141,13 @@ int	path_ok(t_game *game)
 				aroundplayer(game, x, y - 1);
 				x = 0;
 			}
+			//printf("%c", game->maps.mapcopy[x][y]);
 			y++;
 		}
 		x++;
-		printf("%s", game->maps.mapcopy[x]);
 	}
-	if (game->flag.collect_all == TRUE && exitcheck(game))
-		return (1);
+	//printf("%s\n", game->maps.mapcopy[x]);
+	if (reach_exit(game))
+		return (TRUE);
 	return (FALSE);
 }
