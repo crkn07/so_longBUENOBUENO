@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/15 18:52:13 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:14:51 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void	load_map(t_game *game, char *file)
 				game->maps.coord[i][j] = line[j];
 			else
 				error_message("Invalid components in map.ber\n");
-			//printf("%c", line[j]);
-			//printf("%c", game->maps.coord[i][j]);
 			j++;
 		}
 		i++;
@@ -117,11 +115,9 @@ void	read_file(t_game *game, char *file)
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
 	if (valid_path_exit(game) == FALSE)
-		error_message("no se puede");
-	//free(game->maps.mapcopy);
+		error_message("it´s impossible to reach the exit");
 	if (valid_path_collect(game) == FALSE)
-		error_message("no se puede col");
-	//free(game->maps.mapcopy2);
+		error_message("it´s impossible to reach all collectables");
 	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }

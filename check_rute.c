@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_rute.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/15 18:55:09 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:14:04 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	reach_exit(t_game *game)
 		}
 		x++;
 	}
-	return (error_message("No succesfull path found\n"), 0);
+	return (FALSE);
 }
 
 /**
@@ -76,8 +76,8 @@ int	checkplayer(t_game *game, int x, int y)
 	|| game->maps.mapcopy[x][y - 1] == '0'
 	|| game->maps.mapcopy[x + 1][y] == 'C'
 	|| game->maps.mapcopy[x + 1][y] == '0'))
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 /**
  * It allocates memory for a copy of the map, and then copies the map into the
@@ -98,16 +98,13 @@ int	copymap(t_game *game)
 	x = 0;
 	while (x < game->maps.rows)
 	{
-		game->maps.mapcopy[x] = (char *)ft_calloc(game->maps.cols, sizeof(char));
+		game->maps.mapcopy[x] = ft_calloc(game->maps.cols, sizeof(char));
 		if (!game->maps.mapcopy)
 			return (0);
 		y = 0;
 		while (y < game->maps.cols)
 		{
 			game->maps.mapcopy[x][y] = game->maps.coord[x][y];
-			//printf("%c", game->maps.mapcopy[x][y]);
-			//ft_putstr_fd("\n", 1);
-			//printf("%c", game->maps.coord[x][y]);
 			y++;
 		}
 		x++;
@@ -141,12 +138,10 @@ int	valid_path_exit(t_game *game)
 				aroundplayer(game, x, y - 1);
 				x = 0;
 			}
-			//printf("%c", game->maps.mapcopy[x][y]);
 			y++;
 		}
 		x++;
 	}
-	//printf("%s\n", game->maps.mapcopy[x]);
 	if (reach_exit(game))
 		return (TRUE);
 	return (FALSE);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_rute_collect.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/15 18:54:26 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:10:17 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,20 @@ int	reach_collect(t_game *game)
 		y = 0;
 		while (y < game->maps.cols)
 		{
-			if ((game->maps.mapcopy2[x][y] == 'C' && game->maps.mapcopy2[x][y + 1] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && game->maps.mapcopy2[x][y - 1] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && game->maps.mapcopy2[x - 1][y] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && game->maps.mapcopy2[x + 1][y] == 'P'))
-				return (1);
+			if ((game->maps.mapcopy2[x][y] == 'C' && 
+			game->maps.mapcopy2[x][y + 1] == 'P')
+			|| (game->maps.mapcopy2[x][y] == 'C' && 
+			game->maps.mapcopy2[x][y - 1] == 'P')
+			|| (game->maps.mapcopy2[x][y] == 'C' && 
+			game->maps.mapcopy2[x - 1][y] == 'P')
+			|| (game->maps.mapcopy2[x][y] == 'C' && 
+			game->maps.mapcopy2[x + 1][y] == 'P'))
+				return (TRUE);
 			y++;
 		}
 		x++;
 	}
-	return (error_message("No llega al coleccionable\n"), 0);
+	return (FALSE);
 }
 
 /**
@@ -75,8 +79,8 @@ int	checkcollect(t_game *game, int x, int y)
 	|| game->maps.mapcopy2[x][y - 1] == '0'
 	|| game->maps.mapcopy2[x + 1][y] == 'E'
 	|| game->maps.mapcopy2[x + 1][y] == '0'))
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 /**
  * It allocates memory for a copy of the map, and then copies the map into the
@@ -97,21 +101,17 @@ int	copymap2(t_game *game)
 	x = 0;
 	while (x < game->maps.rows)
 	{
-		game->maps.mapcopy2[x] = (char *)ft_calloc(game->maps.cols, sizeof(char));
+		game->maps.mapcopy2[x] = ft_calloc(game->maps.cols, sizeof(char));
 		if (!game->maps.mapcopy2)
 			return (0);
 		y = 0;
 		while (y < game->maps.cols)
 		{
 			game->maps.mapcopy2[x][y] = game->maps.coord[x][y];
-			//printf("%c", game->maps.mapcopy2[x][y]);
-			//ft_putstr_fd("\n", 1);
-			//printf("%c", game->maps.coord[x][y]);
 			y++;
 		}
 		x++;
 	}
-	//game->maps.mapcopy2[x] = 0;
 	return (TRUE);
 }
 
@@ -141,13 +141,11 @@ int	valid_path_collect(t_game *game)
 				aroundcollect(game, x, y - 1);
 				x = 0;
 			}
-			//printf("%c", game->maps.mapcopy2[x][y]);
 			y++;
 		}
 		x++;
 	}
-	//printf("%s\n", game->maps.mapcopy2[x]);
 	if (reach_collect(game))
-		return (1);
+		return (TRUE);
 	return (FALSE);
 }
