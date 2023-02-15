@@ -6,15 +6,15 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/15 19:10:17 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 19:33:47 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
 
 /**
- * It checks if the col is around a box, and if so, it changes the box to a 'P' (col)
- * 
+ * It checks if the col is around a box, and if so, it changes the box 
+ * to a 'P' (col)
  * @param game the game struct
  * @param x the x coordinate of the col
  * @param y the y coordinate of the col
@@ -43,14 +43,14 @@ int	reach_collect(t_game *game)
 		y = 0;
 		while (y < game->maps.cols)
 		{
-			if ((game->maps.mapcopy2[x][y] == 'C' && 
-			game->maps.mapcopy2[x][y + 1] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && 
-			game->maps.mapcopy2[x][y - 1] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && 
-			game->maps.mapcopy2[x - 1][y] == 'P')
-			|| (game->maps.mapcopy2[x][y] == 'C' && 
-			game->maps.mapcopy2[x + 1][y] == 'P'))
+			if ((game->maps.mapcopy2[x][y] == 'C'
+				&& game->maps.mapcopy2[x][y + 1] == 'P')
+				|| (game->maps.mapcopy2[x][y] == 'C' &&
+				game->maps.mapcopy2[x][y - 1] == 'P')
+				|| (game->maps.mapcopy2[x][y] == 'C' &&
+				game->maps.mapcopy2[x - 1][y] == 'P')
+				|| (game->maps.mapcopy2[x][y] == 'C' &&
+				game->maps.mapcopy2[x + 1][y] == 'P'))
 				return (TRUE);
 			y++;
 		}
@@ -82,6 +82,7 @@ int	checkcollect(t_game *game, int x, int y)
 		return (TRUE);
 	return (FALSE);
 }
+
 /**
  * It allocates memory for a copy of the map, and then copies the map into the
  * allocated memory
@@ -95,7 +96,7 @@ int	copymap2(t_game *game)
 	int	x;
 	int	y;
 
-	game->maps.mapcopy2 = (char**)ft_calloc(game->maps.rows, (sizeof(char *)));
+	game->maps.mapcopy2 = (char **)ft_calloc(game->maps.rows, (sizeof(char *)));
 	if (!game->maps.mapcopy2)
 		return (0);
 	x = 0;
