@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/15 19:38:21 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:32:04 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,20 @@ int	valid_path_exit(t_game *game)
 				aroundplayer(game, x, y + 1);
 				aroundplayer(game, x, y - 1);
 				x = 0;
+			}
+			y++;
+		}
+		x++;
+	}
+	x = 0;
+	while (x < game->maps.rows)
+	{
+		y = 0;
+		while (y < game->maps.cols)
+		{
+			if (game->maps.mapcopy[x][y] == 'C')
+			{
+				error_message("no collect");
 			}
 			y++;
 		}

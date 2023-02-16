@@ -13,17 +13,25 @@
 NAME = so_long
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
+FSANI = -g -fsanitize=address
 MLX_FLAGS = -framework OpenGL -framework AppKit
 LIBFT = ./libft/libft.a
 MLX = ./mlx/libmlx.a
-MAIN = main.c
-SRC =	collectable.c covers_change.c draw_sprites.c print_enemy.c \
+SRC_DIR = ./src/
+SRC_B_DIR = ./src_bonus/
+LIBRARIES = ./includes/
+LIBRARIES_BONUS = ./includes_bonus/
+
+SRC =	main.c collectable.c covers_change.c draw_sprites.c print_enemy.c \
 		enemy_config.c error.c moments_tester.c smaller_mlx.c img_init.c \
 		launch_game.c keyboard_movement.c map_coord.c print_map.c \
 		check_map.c read_map.c check_collision.c move_dir.c \
 		move_init.c print_player.c reset_game.c step_count.c check_rute.c \
-		check_rute_collect.c util_lst.c \
+		util_lst.c \
+
+SRCS = $(addprefix $(SRCS_DIR), $(SRC))
+SRCS_BONUS = $(addprefix $(SRC_B_DIR), $(SRC_B))
 
 OBJS = $(SRC:.c=.o)
 
@@ -35,7 +43,7 @@ make_libft:
 make_mlx:
 	@make all -C ./mlx
 
-$(NAME): $(OBJS) $(MAIN) $(SRC)
+$(NAME): $(OBJS) $(SRC)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MAIN) -o $(NAME)
 	
 bonus: all
@@ -50,6 +58,7 @@ fclean: clean
 	@make fclean -C ./libft
 	@make clean -C ./mlx
 
-re: fclean all 
+re: fclean all
+
 
 .PHONY: all clean fclean re bonus

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 14:18:05 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 23:00:02 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 21:38:14 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  * COMPO OPTION
  *------------------------------*/
 # define COMPO_P_MAX	1
-# define COMPO_C_MAX	1
+# define COMPO_C_MAX	3
 # define COMPO_E_MAX	1
 
 /*------------------------------

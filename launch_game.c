@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:09:39 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:27:19 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/16 11:01:58 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	launch_player(t_game *game)
 	game->player.spr.i = 0;
 	game->player.spr.dir = DIR_SOUTH;
 	game->player.spr.move = TRUE;
+	game->player.death = 0;
 }
 
 void	init_flags(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/15 19:14:51 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/15 23:37:14 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ void	load_map(t_game *game, char *file)
 	}
 	free(line);
 	copymap(game);
-	copymap2(game);
 	close(fd);
 }
 
@@ -116,8 +115,6 @@ void	read_file(t_game *game, char *file)
 		error_message("Map isn`t full walled!\n");
 	if (valid_path_exit(game) == FALSE)
 		error_message("it´s impossible to reach the exit");
-	if (valid_path_collect(game) == FALSE)
-		error_message("it´s impossible to reach all collectables");
 	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }

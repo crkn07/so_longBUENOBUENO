@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:51:09 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/15 12:54:15 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:57:34 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_coll
 typedef struct s_player
 {
 	t_spr	spr;
-	int		life;
+	int		death;
 	int		step;
 	int		item;
 }			t_player;
@@ -158,6 +158,7 @@ void	move_east(t_game *game, t_spr *sprite);
 
 t_clst	*clst_new(int x, int y);
 t_clst	*clst_last(t_clst *lst);
+
 void	clst_add_back(t_clst **lst, t_clst *new);
 void	clst_clear(t_clst *head);
 

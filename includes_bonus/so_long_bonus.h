@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:51:09 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 01:02:21 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:09:54 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,6 @@ void	spin_like_clock(t_spr *sprite);
 
 void	launch_window(t_game *game);
 int		close_game(t_game *game);
+void	exit_message(char *msg, t_game *game);
 
 #endif
