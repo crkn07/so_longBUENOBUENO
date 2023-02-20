@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 04:17:43 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 23:11:55 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:38:44 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 /**
  * check map file components
@@ -19,16 +19,24 @@
  * C : a Collectible.
  * E : map Exit.
  * P : the Player’s starting position.
- * R : team Rocket. enemy patrol.
+ * R : Charizard. enemy patrol.
  */
 int	check_comp(char c)
 {
-	if (c == '0' || c == '1' || c == 'C'
-		|| c == 'E' || c == 'P' || c == 'R')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P' || c == 'R')
 		return (TRUE);
 	return (FALSE);
 }
 
+/**
+ * It checks if the number of columns in the map is equal to the 
+ * number of columns in the first line of the map
+ * 
+ * @param game the game struct
+ * @param len2 The length of the current line in the map file.
+ * 
+ * @return a boolean value.
+ */
 int	map_rect(t_game *game, int len2)
 {
 	int	len1;
@@ -39,31 +47,67 @@ int	map_rect(t_game *game, int len2)
 	return (TRUE);
 }
 
-int	fill_walled(t_map maps)
+/**
+ * It checks if the first and last columns and rows of the map are all walls
+ * @param map The map structure.
+ * @return a boolean value.
+ */
+int	fill_walled(t_map map)
 {
 	int	max_col;
 	int	max_row;
 	int	i;
 
 	i = 0;
-	max_col = maps.cols - 1;
-	max_row = maps.rows - 1;
-	while (i < maps.rows)
+	max_col = map.cols - 1;
+	max_row = map.rows - 1;
+	while (i < map.rows)
 	{
-		if (maps.coord[i][0] != '1' || maps.coord[i][max_col] != '1')
+		if (map.coord[i][0] != '1' || map.coord[i][max_col] != '1')
 			return (FALSE);
 		i++;
 	}
 	i = 0;
-	while (i < maps.cols)
+	while (i < map.cols)
 	{
-		if (maps.coord[0][i] != '1' || maps.coord[max_row][i] != '1')
+		if (map.coord[0][i] != '1' || map.coord[max_row][i] != '1')
 			return (FALSE);
 		i++;
 	}
 	return (TRUE);
 }
 
+/**
+ * It checks if the sprite can move in the direction it's facing
+ * @param game the game struct
+ * @param sprite the sprite that is moving
+ * @param dir the direction the sprite is moving in
+ * @return TRUE or FALSE
+ */
+int	check_collision(t_game *game, t_spr *sprite, int dir)
+{
+	int		x;
+	int		y;
+	char	c;
+
+	x = game->dir2coord[dir].x;
+	y = game->dir2coord[dir].y;
+	c = game->maps.coord[sprite->y + y][sprite->x + x];
+	if (c == 'R' && !game->flag.enemy_walk)
+		return (TRUE);
+	if (c == '1')
+		return (TRUE);
+	else if (c == 'E' && !game->flag.collect_all)
+		return (TRUE);
+	return (FALSE);
+}
+
+/**
+ * It checks if the extension of the file is valid
+ * @param str the string to check
+ * @param ext The extension to check for.
+ * @return TRUE
+ */
 int	check_extension(char *str, char *ext)
 {
 	int	i;

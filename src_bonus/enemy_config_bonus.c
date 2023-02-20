@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 14:40:23 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 22:56:46 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:40:50 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	init_enemy(t_game *game)
 {

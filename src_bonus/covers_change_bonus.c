@@ -6,18 +6,18 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:05:07 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 23:12:43 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 12:24:35 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	print_covers_change(t_game *game)
 {
 	int		x;
 	int		y;
 
-	x = game->maps.cols / 2 - 2;
+	x = game->maps.cols / 2 - 3;
 	y = game->maps.rows / 2 - 2;
 	mlx_clear_window(game->mlx, game->win);
 	if (game->flag.game_scene == GAME_START)

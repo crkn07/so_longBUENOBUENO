@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 07:16:05 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:05:42 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:43:39 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 static void	print_step_count(t_game *game)
 {
@@ -28,6 +28,6 @@ void	draw_step_count(t_game *game)
 	if (game->flag.step_cnt && game->flag.game_scene == GAME_INITIATED)
 		print_step_count(game);
 	ft_put_img64(game, game->tile.tb.ptr, 0, 0);
-	mlx_string_put(game->mlx, game->win, 24, 36, 0x000000, str);
+	mlx_string_put(game->mlx, game->win, 25, 27, 0x000000, str);
 	free(str);
 }

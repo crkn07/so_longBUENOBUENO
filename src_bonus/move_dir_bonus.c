@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 05:54:32 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 21:14:54 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:42:48 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	move_dir(t_game *game, t_spr *sprite, int dir)
 {

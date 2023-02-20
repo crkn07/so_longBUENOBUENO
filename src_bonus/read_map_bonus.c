@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_read_bonus.c                                   :+:      :+:    :+:   */
+/*   read_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:37:40 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:43:18 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 /**
  * 			col 0	col 1
  * row 0	[  ]	[  ]
  * row 1	[  ]	[  ]
  */
-
-int	open_file(char *filename)
+int	open_fd(char *file)
 {
 	int	fd;
 
-	fd = open(filename, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd <= 0)
-		error_message("File open fail\n");
-	return (fd);
+		error_message("error opening file, please check filename or file path\n");
+	return (fd);	
 }
-
-void	count_max_rows_cols(t_game *game, int fd)
+void	num_max_rowsandcols(t_game *game, int fd)
 {
 	int		tmp_cols;
 	char	c;
@@ -50,59 +48,69 @@ void	count_max_rows_cols(t_game *game, int fd)
 	}
 }
 
-void	map_malloc(t_game *game, int fd)
+void	alloc_map_mem(t_game *game, int fd)
 {
 	int	i;
-
-	count_max_rows_cols(game, fd);
-	game->maps.coord = (char **)malloc(sizeof(char *) * (game->maps.rows));
+	
+	num_max_rowsandcols(game, fd);
+	game->maps.coord = (char **)ft_calloc((game->maps.rows), sizeof(char *));
 	i = 0;
 	while (i < game->maps.rows)
 	{
-		game->maps.coord[i] = (char *)malloc(sizeof(char) * (game->maps.cols));
+		game->maps.coord[i] = (char *)ft_calloc((game->maps.cols), sizeof(char));
 		i++;
 	}
 }
 
-void	map_load(t_game *game, char *filename)
+/**
+ * It reads the map file and stores the map in a 2D array
+ * 
+ * @param game the game struct
+ * @param file the name of the file to be opened
+ */
+void	load_map(t_game *game, char *file)
 {
 	int		fd;
 	int		i;
 	int		j;
 	char	*line;
 
-	fd = open_file(filename);
+	fd = open_fd(file);
 	i = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (map_rect(game, ft_strlen(line)) == FALSE)
-			error_message("Map file is not rectangular.\n");
+			error_message("Not rectangular map, please check map file\n");
 		j = 0;
 		while (j < game->maps.cols)
 		{
-			if (check_comp(line[j]) == TRUE)
+			if  (check_comp(line[j]) == TRUE)
 				game->maps.coord[i][j] = line[j];
 			else
-				error_message("Invalid components found in map file.");
+				error_message("Invalid components in map.ber\n");
 			j++;
 		}
 		i++;
 		free(line);
 	}
 	free(line);
+	copymap(game);
 	close(fd);
 }
 
-void	file_read(t_game *game, char *filename)
+void	read_file(t_game *game, char *file)
 {
-	int		fd;
-
-	check_extension(filename, MAP_EXT);
-	fd = open_file(filename);
-	map_malloc(game, fd);
+	int	fd;
+	
+	check_extension(file, MAP_EXT);
+	fd = open_fd(file);
+	alloc_map_mem(game, fd);
 	close(fd);
-	map_load(game, filename);
+	load_map(game, file);
 	if (fill_walled(game->maps) == FALSE)
-		error_message("Map is not walled.\n");
+		error_message("Map isn`t full walled!\n");
+	if (valid_path_exit(game) == FALSE)
+		error_message("it´s impossible to reach the exit");
 	draw_comp_by_coord(game);
+	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 18:14:15 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/15 23:36:40 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/18 10:27:44 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * 'p' : player
  * 'e' : exit
  * 'c' : collectible item
- * 'r' : Team Rocket (enemy)
+ * 'r' : Charizard (enemy)
  *  */
 typedef struct s_compo
 {
@@ -58,5 +58,7 @@ void	file_read(t_game *game, char *filename);
 int		valid_path_exit(t_game *game);
 int		copymap(t_game *game);
 int		open_fd(char *file);
+void	error_message(char *msg);
+void	exit_message(char *msg, t_game *game);
 
 #endif

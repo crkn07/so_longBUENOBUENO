@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   collec_bonus.c                                     :+:      :+:    :+:   */
+/*   collectable_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 05:47:01 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 21:20:41 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:40:32 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	init_collectable(t_game *game)
 {

@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_coord_bonus.c                            :+:      :+:    :+:   */
+/*   map_coord_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/27 02:14:54 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 23:15:05 by crtorres         ###   ########.fr       */
+/*   Created: 2023/02/18 12:48:35 by crtorres          #+#    #+#             */
+/*   Updated: 2023/02/19 10:42:31 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 static void	set_component_counter(t_game *game)
 {
 	game->maps.cnt.p = 0;
-	game->maps.cnt.e = 0;
 	game->maps.cnt.c = 0;
+	game->maps.cnt.e = 0;
 	game->maps.cnt.r = 0;
 }
 
+/**
+ * It checks the map for the
+ * player, collectibles, enemies, and end point, and stores their coordinates in
+ * the appropriate variables
+ * 
+ * @param game the game structure
+ * @param y the y coordinate of the map
+ * @param x x-coordinate of the sprite
+ */
 static void	components_coord(t_game *game, int i, int j)
 {
 	if (game->maps.coord[i][j] == 'P')
@@ -51,11 +60,11 @@ int	check_comp_isvalid(t_game *game)
 {
 	if (!(0 < game->maps.cnt.p && game->maps.cnt.p <= COMPO_P_MAX))
 		return (FALSE);
-	if (!(0 < game->maps.cnt.p && game->maps.cnt.p <= COMPO_C_MAX))
+	if (!(0 < game->maps.cnt.c && game->maps.cnt.c <= COMPO_C_MAX))
 		return (FALSE);
 	if (!(0 < game->maps.cnt.e && game->maps.cnt.e <= COMPO_E_MAX))
 		return (FALSE);
-	if (!(0 <= game->maps.cnt.r && game->maps.cnt.r <= COMPO_R_MAX))
+	if (!(0 <= game->maps.cnt.r && game->maps.cnt.r <= 1))
 		return (FALSE);
 	return (TRUE);
 }
@@ -78,5 +87,5 @@ void	draw_comp_by_coord(t_game *game)
 		i++;
 	}
 	if (check_comp_isvalid(game) == FALSE)
-		error_message("Invalid number of components found.\n");
+		error_message("Invalid number of components\n");
 }

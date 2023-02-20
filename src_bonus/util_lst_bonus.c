@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   util_lst_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jisokang <jisokang@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/26 07:08:11 by jisokang          #+#    #+#             */
-/*   Updated: 2021/08/10 17:01:02 by jisokang         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:43:48 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 t_clst	*clst_new(int x, int y)
 {
@@ -28,14 +28,13 @@ t_clst	*clst_new(int x, int y)
 
 t_clst	*clst_last(t_clst *lst)
 {
-	t_clst	*curr;
-
-	curr = lst;
-	if (lst == NULL)
-		return (NULL);
-	while (curr->next != NULL)
-		curr = curr->next;
-	return (curr);
+	if (lst)
+	{
+		while (lst->next)
+			lst = lst->next;
+		return (lst);
+	}
+	return (0);
 }
 
 void	clst_add_back(t_clst **lst, t_clst *new)

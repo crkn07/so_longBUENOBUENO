@@ -11,6 +11,7 @@
 # **************************************************************************** #
 
 NAME = so_long
+NAME_BONUS = so_long_bonus
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -21,40 +22,53 @@ MLX = ./mlx/libmlx.a
 SRC_DIR = ./src/
 SRC_B_DIR = ./src_bonus/
 LIBRARIES = ./includes/
-LIBRARIES_BONUS = ./includes_bonus/
+LIBS_BONUS = ./includes_bonus/
 
 SRC =	main.c collectable.c covers_change.c draw_sprites.c print_enemy.c \
 		enemy_config.c error.c moments_tester.c smaller_mlx.c img_init.c \
 		launch_game.c keyboard_movement.c map_coord.c print_map.c \
-		check_map.c read_map.c check_collision.c move_dir.c \
-		move_init.c print_player.c reset_game.c step_count.c check_rute.c \
-		util_lst.c \
+		check_map.c read_map.c move_dir.c print_player.c reset_game.c \
+		step_count.c check_rute.c util_lst.c \
 
-SRCS = $(addprefix $(SRCS_DIR), $(SRC))
+SRC_B = main_bonus.c collectable_bonus.c covers_change_bonus.c \
+		draw_sprites_bonus.c print_enemy_bonus.c enemy_config_bonus.c \
+		error_bonus.c moments_tester_bonus.c smaller_mlx_bonus.c \
+		img_init_bonus.c launch_game_bonus.c keyboard_movement_bonus.c \
+		map_coord_bonus.c print_map_bonus.c check_map_bonus.c read_map_bonus.c \
+		move_dir_bonus.c print_player_bonus.c reset_game_bonus.c \
+		step_count_bonus.c check_rute_bonus.c util_lst_bonus.c \
+
+SRCS = $(addprefix $(SRC_DIR), $(SRC))
 SRCS_BONUS = $(addprefix $(SRC_B_DIR), $(SRC_B))
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 all: make_libft make_mlx $(NAME)
 
+bonus: make_libft make_mlx $(NAME_BONUS)
+
 make_libft:
-	@make all -C ./libft
+	make -C ./libft
 
 make_mlx:
-	@make all -C ./mlx
+	@make -C ./mlx
 
-$(NAME): $(OBJS) $(SRC)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS) $(MAIN) -o $(NAME)
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) -I $(LIBRARIES) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME)
+
+
+$(NAME_BONUS): $(OBJS_BONUS)
+	@$(CC) $(CFLAGS) $(OBJS_BONUS) -I $(LIBS_BONUS) $(LIBFT) $(MLX) $(MLX_FLAGS) -o $(NAME_BONUS)
 	
-bonus: all
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(OBJS_BONUS)
 	@make clean -C ./libft
 	@make clean -C ./mlx
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAME_BONUS)
 	@make fclean -C ./libft
 	@make clean -C ./mlx
 

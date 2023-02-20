@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/16 05:47:08 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 12:04:04 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 11:34:17 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 void	*ft_xpm_to_img(t_game *game, char *str)
 {

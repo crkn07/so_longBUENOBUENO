@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/05 11:01:18 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:59:55 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:42:53 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 static t_img	*get_spr_enemy(t_game *game, int dir)
 {
@@ -38,6 +38,11 @@ void	print_enemy_walk(t_game *game, t_spr *enemy, t_img *sprite, int dir)
 		game->flag.held_keys = FALSE;
 		game->flag.enemy_walk = FALSE;
 		game->flag.game_scene = GAME_OVER;
+		ft_putstr_fd(RED"=*=*=*=*=*=*=*=*=*=*=\n\n"RESET, 1);
+		ft_putstr_fd(RED"     GAME OVER     \n"RESET, 1);
+		ft_putstr_fd(RED"     YOU DIED      \n"RESET, 1);
+		ft_putstr_fd(ROSE"Please press [ESC] to exit\n"RESET, 1);
+		ft_putstr_fd(ROSE" or press [R] to retry\n"RESET, 1);
 	}
 }
 

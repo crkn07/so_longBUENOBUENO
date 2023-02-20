@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 07:18:32 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/13 23:48:14 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 12:23:43 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 static void	rest_imgmap_init(t_game *game)
 {
@@ -50,9 +50,9 @@ static void	imgenemy_init(t_game *game)
 
 static void	init_rest_ofimg(t_game *game)
 {
-	game->opening.ptr = ft_xpm_to_img(game, "opening.xpm");
+	game->opening.ptr = ft_xpm_to_img(game, "grassfond430.xpm");
 	game->gameover.ptr = ft_xpm_to_img(game, "gameover.xpm");
-	game->ending.ptr = ft_xpm_to_img(game, "ending.xpm");
+	game->ending.ptr = ft_xpm_to_img(game, "endgame.xpm");
 	game->collec.ball.ptr = ft_xpm_to_img(game, "ball.xpm");
 }
 

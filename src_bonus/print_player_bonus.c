@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 07:09:00 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:52:37 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:43:06 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 static t_img	*get_spr_player(t_game *game, int dir)
 {

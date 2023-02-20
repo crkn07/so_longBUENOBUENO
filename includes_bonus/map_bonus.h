@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 18:14:15 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 00:37:40 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 10:40:20 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map
 	int		rows;
 	int		cols;
 	char	**coord;
+	char	**mapcopy;
 	char	*file;
 	t_compo	cnt;
 }			t_map;
@@ -54,5 +55,10 @@ int		open_file(char *filename);
 void	map_load(t_game *game, char *filename);
 void	draw_comp_by_coord(t_game *game);
 void	file_read(t_game *game, char *filename);
+int		valid_path_exit(t_game *game);
+int		copymap(t_game *game);
+int		open_fd(char *file);
+void	error_message(char *msg);
+void	exit_message(char *msg, t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:51:09 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/16 18:09:54 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 11:34:03 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 # include <stdlib.h>
 # include <string.h>
 
-# include "color_bonus.h"
-# include "key_bonus.h"
-# include "error_bonus.h"
 # include "map_bonus.h"
 # include "config_bonus.h"
 # include "../mlx/mlx.h"
 # include "../Libft/libft.h"
-# include "../Libft/get_next_line.h"
 
 /* Game mode */
 # define MANDATORY		0
@@ -31,7 +27,7 @@
 
 # define TRUE			1
 # define FALSE			0
-//서큘러 비트 시프트!
+/* Directions*/
 # define DIR_NONE		0
 # define DIR_SOUTH		1
 # define DIR_WEST		2
@@ -137,6 +133,7 @@ typedef struct s_game
 }				t_game;
 
 void	*ft_xpm_to_img(t_game *game, char *str);
+void	*ft_xpm_to_img(t_game *game, char *str);
 void	ft_put_img64(t_game *game, void *img_ptr, int x, int y);
 void	ft_put_img(t_game *game, void *img_ptr, int x, int y);
 
@@ -158,6 +155,7 @@ void	move_east(t_game *game, t_spr *sprite);
 
 t_clst	*clst_new(int x, int y);
 t_clst	*clst_last(t_clst *lst);
+
 void	clst_add_back(t_clst **lst, t_clst *new);
 void	clst_clear(t_clst *head);
 
@@ -178,6 +176,7 @@ void	spin_like_clock(t_spr *sprite);
 
 void	launch_window(t_game *game);
 int		close_game(t_game *game);
-void	exit_message(char *msg, t_game *game);
+
+void	read_file(t_game *game, char *file);
 
 #endif

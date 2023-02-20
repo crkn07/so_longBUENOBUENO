@@ -6,11 +6,11 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 23:09:34 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/14 01:02:21 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/19 12:27:17 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include_bonus/so_long_bonus.h"
+#include "../includes_bonus/so_long_bonus.h"
 
 int	close_game(t_game *game)
 {
@@ -42,14 +42,20 @@ int	main_loop(t_game *game)
 	return (0);
 }
 
+void	ft_leaks()
+{
+	system("leaks so_long");
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
+	atexit(ft_leaks);
 	if (argc != 2)
-		error_message("Map file still to be added\n");
+		error_message("map file still to be added\n");
 	init_collectable(&game);
-	file_read(&game, argv[1]);
+	read_file(&game, argv[1]);
 	launch_game(&game);
 	mlx_hook(game.win, KEY_PRESS, 0, &keypress, &game);
 	mlx_hook(game.win, KEY_EXIT, 0, &close_game, &game);

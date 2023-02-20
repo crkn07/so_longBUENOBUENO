@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:51:09 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/16 17:57:34 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/18 12:55:52 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include <stdio.h>
 # include <string.h>
 
-# include "color.h"
-# include "key.h"
-# include "error.h"
 # include "map.h"
 # include "config.h"
 # include "../mlx/mlx.h"
@@ -31,7 +28,7 @@
 
 # define TRUE			1
 # define FALSE			0
-
+/* Directions*/
 # define DIR_NONE		0
 # define DIR_SOUTH		1
 # define DIR_WEST		2
@@ -103,7 +100,6 @@ typedef struct s_coll
 typedef struct s_player
 {
 	t_spr	spr;
-	int		death;
 	int		step;
 	int		item;
 }			t_player;
