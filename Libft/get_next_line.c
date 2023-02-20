@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 19:15:25 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/01 12:51:52 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:38:50 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		is_newline(char const *s)
+int	is_newline(char const *s)
 {
 	size_t	i;
 
@@ -28,7 +28,7 @@ int		is_newline(char const *s)
 	return (-1);
 }
 
-int		split_line(char **backup, char **line, int cut_idx)
+int	split_line(char **backup, char **line, int cut_idx)
 {
 	char			*temp;
 	int				len;
@@ -48,13 +48,14 @@ int		split_line(char **backup, char **line, int cut_idx)
 	return (1);
 }
 
-int		return_all(char **backup, char **line, int read_size)
+int	return_all(char **backup, char **line, int read_size)
 {
 	int	cut_idx;
 
 	if (read_size < 0)
 		return (-1);
-	if (*backup && (cut_idx = is_newline(*backup)) >= 0)
+	cut_idx = is_newline(*backup);
+	if (*backup && cut_idx >= 0)
 		return (split_line(backup, line, cut_idx));
 	else if (*backup != NULL)
 	{
@@ -66,20 +67,22 @@ int		return_all(char **backup, char **line, int read_size)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
-	static char *backup;
+	static char	*backup;
 	char		buf[BUFFER_SIZE + 1];
 	int			read_size;
 	int			cut_idx;
 
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
-	while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
+	read_size = read(fd, buf, BUFFER_SIZE);
+	while (read_size > 0)
 	{
 		buf[read_size] = '\0';
 		backup = ft_strjoin_gnl(backup, buf);
-		if ((cut_idx = is_newline(backup)) >= 0)
+		cut_idx = is_newline(backup);
+		if (cut_idx >= 0)
 			return (split_line(&backup, line, cut_idx));
 	}
 	return (return_all(&backup, line, read_size));

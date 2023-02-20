@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 15:05:07 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 12:24:35 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:39:06 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_covers_change(t_game *game)
 	int		y;
 
 	x = game->maps.cols / 2 - 3;
-	y = game->maps.rows / 2 - 2;
+	y = game->maps.rows / 2 - 3;
 	mlx_clear_window(game->mlx, game->win);
 	if (game->flag.game_scene == GAME_START)
 		ft_put_img64(game, game->opening.ptr, x, y);

@@ -28,7 +28,7 @@ SRC =	main.c collectable.c covers_change.c draw_sprites.c print_enemy.c \
 		enemy_config.c error.c moments_tester.c smaller_mlx.c img_init.c \
 		launch_game.c keyboard_movement.c map_coord.c print_map.c \
 		check_map.c read_map.c move_dir.c print_player.c reset_game.c \
-		step_count.c check_rute.c util_lst.c \
+		step_count.c check_rute.c check_route_collect.c util_lst.c \
 
 SRC_B = main_bonus.c collectable_bonus.c covers_change_bonus.c \
 		draw_sprites_bonus.c print_enemy_bonus.c enemy_config_bonus.c \
@@ -36,7 +36,8 @@ SRC_B = main_bonus.c collectable_bonus.c covers_change_bonus.c \
 		img_init_bonus.c launch_game_bonus.c keyboard_movement_bonus.c \
 		map_coord_bonus.c print_map_bonus.c check_map_bonus.c read_map_bonus.c \
 		move_dir_bonus.c print_player_bonus.c reset_game_bonus.c \
-		step_count_bonus.c check_rute_bonus.c util_lst_bonus.c \
+		step_count_bonus.c check_rute_bonus.c check_route_collect_bonus.c \
+		util_lst_bonus.c \
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC))
 SRCS_BONUS = $(addprefix $(SRC_B_DIR), $(SRC_B))

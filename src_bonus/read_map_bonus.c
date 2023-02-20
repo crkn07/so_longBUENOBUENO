@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 10:43:18 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:35:37 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ int	open_fd(char *file)
 
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
-		error_message("error opening file, please check filename or file path\n");
-	return (fd);	
+		error_message("error opening file, check filename or file path\n");
+	return (fd);
 }
+
 void	num_max_rowsandcols(t_game *game, int fd)
 {
 	int		tmp_cols;
@@ -51,13 +52,13 @@ void	num_max_rowsandcols(t_game *game, int fd)
 void	alloc_map_mem(t_game *game, int fd)
 {
 	int	i;
-	
+
 	num_max_rowsandcols(game, fd);
 	game->maps.coord = (char **)ft_calloc((game->maps.rows), sizeof(char *));
 	i = 0;
 	while (i < game->maps.rows)
 	{
-		game->maps.coord[i] = (char *)ft_calloc((game->maps.cols), sizeof(char));
+		game->maps.coord[i] = ft_calloc((game->maps.cols), sizeof(char));
 		i++;
 	}
 }
@@ -81,14 +82,13 @@ void	load_map(t_game *game, char *file)
 	{
 		if (map_rect(game, ft_strlen(line)) == FALSE)
 			error_message("Not rectangular map, please check map file\n");
-		j = 0;
-		while (j < game->maps.cols)
+		j = -1;
+		while (++j < game->maps.cols)
 		{
-			if  (check_comp(line[j]) == TRUE)
+			if (check_comp(line[j]) == TRUE)
 				game->maps.coord[i][j] = line[j];
 			else
 				error_message("Invalid components in map.ber\n");
-			j++;
 		}
 		i++;
 		free(line);
@@ -101,7 +101,7 @@ void	load_map(t_game *game, char *file)
 void	read_file(t_game *game, char *file)
 {
 	int	fd;
-	
+
 	check_extension(file, MAP_EXT);
 	fd = open_fd(file);
 	alloc_map_mem(game, fd);
@@ -109,8 +109,8 @@ void	read_file(t_game *game, char *file)
 	load_map(game, file);
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
+	draw_comp_by_coord(game);
 	if (valid_path_exit(game) == FALSE)
 		error_message("it´s impossible to reach the exit");
-	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }

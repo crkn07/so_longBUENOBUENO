@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/13 00:57:18 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/01 12:51:58 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:26:19 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ char	*ft_strdup_gnl(const char *s1)
 	size_t	len;
 
 	len = ft_strlen(s1);
-	if ((s2 = malloc(sizeof(char) * (len + 1))) == NULL)
+	s2 = malloc(sizeof(char) * (len + 1));
+	if (s2 == NULL)
 		return (NULL);
 	i = 0;
 	while (s1[i] != '\0')
@@ -63,9 +64,9 @@ size_t	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize)
 
 size_t	ft_strlcat_gnl(char *dst, const char *src, size_t dstsize)
 {
-	size_t src_len;
-	size_t dst_len;
-	size_t i;
+	size_t	src_len;
+	size_t	dst_len;
+	size_t	i;
 
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
@@ -95,7 +96,8 @@ char	*ft_strjoin_gnl(char *s1, char const *s2)
 		return (ft_strdup_gnl(s1));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if ((newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))) == NULL)
+	newstr = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (newstr == NULL)
 		return (NULL);
 	ft_strlcpy_gnl(newstr, s1, s1_len + 1);
 	free(s1);

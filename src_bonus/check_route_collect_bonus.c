@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_sprites_bonus.c                               :+:      :+:    :+:   */
+/*   check_route_collect_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/06 16:32:14 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/20 11:33:53 by crtorres         ###   ########.fr       */
+/*   Created: 2023/02/20 13:55:32 by crtorres          #+#    #+#             */
+/*   Updated: 2023/02/20 13:57:06 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/so_long_bonus.h"
 
-/**
- * If you print the sprites at the
- * top of the screen first, they
- * do not overlap unnaturally.
- */
-void	draw_sprites(t_game *game)
+int	valid_path_collect(t_game *game)
 {
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < game->maps.rows)
+	x = 0;
+	while (x < game->maps.rows)
 	{
-		j = 0;
-		while (j < game->maps.cols)
+		y = 0;
+		while (y < game->maps.cols)
 		{
-			if (game->player.spr.x == j && game->player.spr.y == i)
-				print_player(game);
-			if (game->enemy.x == j && game->enemy.y == i)
-				print_enemy(game);
-			j++;
+			if (game->maps.mapcopy[x][y] == 'C')
+				error_message("doesn´t reach the collectables");
+			y++;
 		}
-		i++;
+		x++;
 	}
+	return (TRUE);
 }

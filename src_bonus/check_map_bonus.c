@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/27 04:17:43 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 10:38:44 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 16:20:06 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,14 @@ int	check_collision(t_game *game, t_spr *sprite, int dir)
 	y = game->dir2coord[dir].y;
 	c = game->maps.coord[sprite->y + y][sprite->x + x];
 	if (c == 'R' && !game->flag.enemy_walk)
-		return (TRUE);
+	{
+		game->flag.game_scene = GAME_OVER;
+		ft_putstr_fd(RED"=*=*=*=*=*=*=*=*=*=*=\n\n"RESET, 1);
+		ft_putstr_fd(RED"     GAME OVER     \n"RESET, 1);
+		ft_putstr_fd(RED"     YOU DIED      \n"RESET, 1);
+		ft_putstr_fd(ROSE"Please press [ESC] to exit\n"RESET, 1);
+		ft_putstr_fd(ROSE" or press [R] to retry\n"RESET, 1);
+	}
 	if (c == '1')
 		return (TRUE);
 	else if (c == 'E' && !game->flag.collect_all)

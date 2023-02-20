@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_rute_bonus.c                                       :+:      :+:    :+:   */
+/*   check_rute_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/18 11:42:38 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:59:03 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,18 +147,7 @@ int	valid_path_exit(t_game *game)
 		}
 		x++;
 	}
-	x = 0;
-	while (x < game->maps.rows)
-	{
-		y = 0;
-		while (y < game->maps.cols)
-		{
-			if (game->maps.mapcopy[x][y] == 'C')
-				error_message("no collect");
-			y++;
-		}
-		x++;
-	}
+	valid_path_collect(game);
 	if (reach_exit(game))
 		return (TRUE);
 	return (FALSE);

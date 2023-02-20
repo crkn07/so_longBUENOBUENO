@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 18:14:15 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 10:40:20 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:58:38 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	map_load(t_game *game, char *filename);
 void	draw_comp_by_coord(t_game *game);
 void	file_read(t_game *game, char *filename);
 int		valid_path_exit(t_game *game);
+int		valid_path_collect(t_game *game);
 int		copymap(t_game *game);
 int		open_fd(char *file);
 void	error_message(char *msg);

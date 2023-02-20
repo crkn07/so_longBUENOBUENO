@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 07:18:32 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 12:23:43 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:40:58 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	imgenemy_init(t_game *game)
 
 static void	init_rest_ofimg(t_game *game)
 {
-	game->opening.ptr = ft_xpm_to_img(game, "grassfond430.xpm");
+	game->opening.ptr = ft_xpm_to_img(game, "grassfond350.xpm");
 	game->gameover.ptr = ft_xpm_to_img(game, "gameover.xpm");
 	game->ending.ptr = ft_xpm_to_img(game, "endgame.xpm");
 	game->collec.ball.ptr = ft_xpm_to_img(game, "ball.xpm");

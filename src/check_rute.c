@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:04:16 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/18 11:42:38 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 15:58:11 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ int	valid_path_exit(t_game *game)
 	x = 0;
 	while (x < game->maps.rows)
 	{
-		y = 0;
-		while (y < game->maps.cols)
+		y = -1;
+		while (++y < game->maps.cols)
 		{
 			if (checkplayer(game, x, y))
 			{
@@ -143,22 +143,10 @@ int	valid_path_exit(t_game *game)
 				aroundplayer(game, x, y - 1);
 				x = 0;
 			}
-			y++;
 		}
 		x++;
 	}
-	x = 0;
-	while (x < game->maps.rows)
-	{
-		y = 0;
-		while (y < game->maps.cols)
-		{
-			if (game->maps.mapcopy[x][y] == 'C')
-				error_message("no collect");
-			y++;
-		}
-		x++;
-	}
+	valid_path_collect(game);
 	if (reach_exit(game))
 		return (TRUE);
 	return (FALSE);

@@ -64,7 +64,7 @@ int	check_comp_isvalid(t_game *game)
 		return (FALSE);
 	if (!(0 < game->maps.cnt.e && game->maps.cnt.e <= COMPO_E_MAX))
 		return (FALSE);
-	if (!(0 <= game->maps.cnt.r && game->maps.cnt.r <= 1))
+	if ((0 <= game->maps.cnt.r && game->maps.cnt.r >= 1))
 		return (FALSE);
 	return (TRUE);
 }
