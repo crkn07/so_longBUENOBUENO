@@ -6,12 +6,21 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/31 07:09:00 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/17 12:34:07 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/20 17:58:55 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+/**
+ * It returns the sprite to be drawn for the player, depending on the direction and
+ * the frame
+ * 
+ * @param game the game struct
+ * @param dir the direction the player is facing
+ * 
+ * @return A pointer to a t_img struct.
+ */
 static t_img	*get_spr_player(t_game *game, int dir)
 {
 	t_img	*spr;
@@ -25,6 +34,15 @@ static t_img	*get_spr_player(t_game *game, int dir)
 	return (spr);
 }
 
+/**
+ * It prints the player's sprite
+ * at the correct location, and increments the player's position
+ * 
+ * @param game the game struct
+ * @param player the player's sprite
+ * @param sprite the sprite to be printed
+ * @param dir the direction the player is walking in
+ */
 static
 void	print_player_walk(t_game *game, t_spr *player, t_img *sprite, int dir)
 {

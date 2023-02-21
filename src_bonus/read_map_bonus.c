@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/11 20:37:55 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/20 13:35:37 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/21 13:30:39 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,8 @@ void	read_file(t_game *game, char *file)
 	load_map(game, file);
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
-	draw_comp_by_coord(game);
 	if (valid_path_exit(game) == FALSE)
 		error_message("it´s impossible to reach the exit");
+	draw_comp_by_coord(game);
 	ft_putstr_fd(BLUE"read_file completed\n"RESET, 1);
 }
