@@ -5,7 +5,7 @@
 #                                                     +:+ +:+         +:+      #
 #    By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/08 13:51:55 by cyacoub-          #+#    #+#              #
+#    Created: 2022/11/20 13:55:32 by crtorres          #+#    #+#              #
 #    Updated: 2023/02/02 18:18:03 by crtorres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -74,6 +74,8 @@ fclean: clean
 	@make clean -C ./mlx
 
 re: fclean all
+
+reb: fclean bonus
 
 
 .PHONY: all clean fclean re bonus

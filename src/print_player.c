@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/31 07:09:00 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/20 17:58:55 by crtorres         ###   ########.fr       */
+/*   Created: 2023/01/31 11:09:00 by crtorres          #+#    #+#             */
+/*   Updated: 2023/02/21 15:23:07 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 /**
- * It returns the sprite to be drawn for the player, depending on the direction and
- * the frame
+ * It returns the sprite to be drawn for the player, depending on the 
+ * direction and the frame
  * 
  * @param game the game struct
  * @param dir the direction the player is facing

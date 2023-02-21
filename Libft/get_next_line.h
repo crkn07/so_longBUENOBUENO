@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: crtorres <crtorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/09 20:24:43 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/02 17:16:52 by crtorres         ###   ########.fr       */
+/*   Created: 2022/11/09 20:24:43 by crtorres          #+#    #+#             */
+/*   Updated: 2023/02/21 15:14:37 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

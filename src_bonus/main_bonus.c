@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/10 23:09:34 by jisokang          #+#    #+#             */
-/*   Updated: 2023/02/19 12:27:17 by crtorres         ###   ########.fr       */
+/*   Created: 2023/02/10 23:09:34 by crtorres          #+#    #+#             */
+/*   Updated: 2023/02/21 15:05:45 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,15 @@ int	main_loop(t_game *game)
 	return (0);
 }
 
-void	ft_leaks()
+/* void	ft_leaks()
 {
 	system("leaks so_long");
-}
+} */
 
 int	main(int argc, char **argv)
 {
 	t_game	game;
 
-	atexit(ft_leaks);
 	if (argc != 2)
 		error_message("map file still to be added\n");
 	init_collectable(&game);
