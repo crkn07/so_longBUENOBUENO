@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 23:09:34 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:07:54 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:44:16 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main_loop(t_game *game)
 /* void	ft_leaks()
 {
 	system("leaks so_long");
-		atexit(ft_leaks);
 } */
 
 int	main(int argc, char **argv)

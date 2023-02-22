@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:37:55 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:06:02 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/22 12:44:33 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ void	load_map(t_game *game, char *file)
 
 	fd = open_fd(file);
 	i = 0;
-	while (get_next_line(fd, &line) > 0)
+	while (i < game->maps.rows)
 	{
+		line = get_next_line(fd);
 		if (map_rect(game, ft_strlen(line)) == FALSE)
 			error_message("Not rectangular map, please check map file\n");
 		j = -1;
@@ -93,7 +94,6 @@ void	load_map(t_game *game, char *file)
 		i++;
 		free(line);
 	}
-	free(line);
 	copymap(game);
 	close(fd);
 }
