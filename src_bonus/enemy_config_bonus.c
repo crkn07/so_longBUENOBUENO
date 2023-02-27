@@ -6,17 +6,20 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:55:32 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:31:02 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 19:09:05 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes_bonus/so_long_bonus.h"
 
-void	init_enemy(t_game *game)
+void	init_enemies(t_game *game)
 {
 	game->enemy.dir = DIR_SOUTH;
 	game->enemy.i = 0;
 	game->enemy.move = TRUE;
+	game->enemy2.dir = DIR_NORTH;
+	game->enemy2.i = 0;
+	game->enemy2.move = TRUE;
 }
 
 void	looking_at_player(t_game *game)
@@ -57,12 +60,25 @@ void	spin_like_clock(t_spr *sprite)
 		sprite->dir = DIR_SOUTH;
 }
 
+void	spin_anti_clock(t_spr *sprite)
+{
+	if (sprite->dir == DIR_NONE)
+		return ;
+	sprite->dir--;
+	if (sprite->dir < DIR_SOUTH)
+		sprite->dir = DIR_EAST;
+}
+
 void	enemy_behaviour(t_game *game)
 {
 	if (game->maps.cnt.r > 0)
 	{
-		if (game->fps % 100 == 0 && !game->flag.enemy_walk)
+		if git!game->flag.enemy_walk)
+		{
 			spin_like_clock(&(game->enemy));
+			spin_anti_clock(&(game->enemy2));
+		}
 		looking_at_player(game);
+		enemy2_look_player(game);
 	}
 }

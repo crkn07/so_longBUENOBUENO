@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 02:14:54 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:17:30 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:50:19 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,6 @@ static void	components_coord(t_game *game, int i, int j)
 		game->maps.cnt.c++;
 		clst_add_back(&(game->collec.clst), clst_new(j, i));
 	}
-	else if (game->maps.coord[i][j] == 'R')
-	{
-		game->enemy.x = j;
-		game->enemy.x0 = j;
-		game->enemy.y = i;
-		game->enemy.y0 = i;
-		game->maps.cnt.r++;
-	}
 	else if (game->maps.coord[i][j] == 'E')
 		game->maps.cnt.e++;
 }
@@ -64,7 +56,7 @@ int	check_comp_isvalid(t_game *game)
 		return (FALSE);
 	if (!(0 < game->maps.cnt.e && game->maps.cnt.e <= COMPO_E_MAX))
 		return (FALSE);
-	if ((0 <= game->maps.cnt.r && game->maps.cnt.r >= 1))
+	if (game->maps.cnt.r > 0)
 		return (FALSE);
 	return (TRUE);
 }

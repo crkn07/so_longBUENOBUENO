@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 20:51:09 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:09:09 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:51:34 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ void	print_collectable(t_game *game);
 void	launch_player(t_game *game);
 void	init_flags(t_game *game);
 void	launch_game(t_game *game);
-int		reset_game(t_game *game);
 
 void	init_dir(t_game *game);
 void	dir_to_coord(int dir, int *x, int *y);
@@ -168,7 +167,6 @@ void	print_covers_change(t_game *game);
 void	moments_tester(t_game *game);
 void	enemy_behaviour(t_game *game);
 void	draw_sprites(t_game *game);
-void	init_enemy(t_game *game);
 
 void	move_dir(t_game *game, t_spr *sprite, int dir);
 void	spin_like_clock(t_spr *sprite);

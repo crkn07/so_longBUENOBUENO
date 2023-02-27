@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:18:05 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:28:33 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 12:41:45 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 /*------------------------------
  * ASSET PATH
  *------------------------------*/
-# define ASSET_PATH		"./assets/"
+# define ASSET_PATH		"./textures/"
 
 /*------------------------------
  * COMPO OPTION
@@ -31,7 +31,7 @@
 # define COMPO_P_MAX	1
 # define COMPO_C_MAX	6
 # define COMPO_E_MAX	1
-# define COMPO_R_MAX	1
+# define COMPO_R_MAX	2
 
 /*------------------------------
  * PLAYER OPTION

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 16:32:14 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:11:37 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:51:05 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	draw_sprites(t_game *game)
 		{
 			if (game->player.spr.x == j && game->player.spr.y == i)
 				print_player(game);
-			if (game->enemy.x == j && game->enemy.y == i)
-				print_enemy(game);
 			j++;
 		}
 		i++;

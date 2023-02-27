@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:37:55 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/22 12:44:33 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:44:28 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	num_max_rowsandcols(t_game *game, int fd)
 	int		tmp_cols;
 	char	c;
 
-	game->maps.rows = 0;
+	game->maps.rows = 1;
 	game->maps.cols = 0;
 	tmp_cols = 0;
 	while (read(fd, &c, 1) > 0)
@@ -77,10 +77,12 @@ void	load_map(t_game *game, char *file)
 	char	*line;
 
 	fd = open_fd(file);
-	i = 0;
-	while (i < game->maps.rows)
+	i = -1;
+	while (++i < game->maps.rows)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			error_message("invalid map, it probably contains an empty line");
 		if (map_rect(game, ft_strlen(line)) == FALSE)
 			error_message("Not rectangular map, please check map file\n");
 		j = -1;
@@ -89,12 +91,10 @@ void	load_map(t_game *game, char *file)
 			if (check_comp(line[j]) == TRUE)
 				game->maps.coord[i][j] = line[j];
 			else
-				error_message("Invalid components in map.ber\n");
+				error_message("Invalid or missing components in map.ber\n");
 		}
-		i++;
 		free(line);
 	}
-	copymap(game);
 	close(fd);
 }
 
@@ -107,6 +107,7 @@ void	read_file(t_game *game, char *file)
 	alloc_map_mem(game, fd);
 	close(fd);
 	load_map(game, file);
+	copymap(game);
 	if (fill_walled(game->maps) == FALSE)
 		error_message("Map isn`t full walled!\n");
 	if (valid_path_exit(game) == FALSE)

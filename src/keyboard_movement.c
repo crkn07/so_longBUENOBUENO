@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 18:34:08 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:25:55 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:44:53 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	keypress(int keycode, t_game *game)
 		exit_message("game finished", game);
 	else if (keycode == KEY_RETURN && game->flag.game_scene == GAME_START)
 		game->flag.game_scene = GAME_INITIATED;
-	else if (keycode == KEY_RESET && game->flag.game_scene != GAME_START)
-		reset_game(game);
 	else if (!game->flag.held_keys && game->flag.game_scene == GAME_INITIATED)
 	{
 		if (keycode == KEY_W || keycode == KEY_UP)

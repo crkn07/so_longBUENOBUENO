@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:48:35 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/20 11:34:14 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:19:26 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,18 @@ static void	components_coord(t_game *game, int i, int j)
 		game->maps.cnt.e++;
 }
 
+static void	compo_blast_coord(t_game *game, int i, int j)
+{
+	if (game->maps.coord[i][j] == 'B')
+	{
+		game->enemy2.x = j;
+		game->enemy2.x0 = j;
+		game->enemy2.y = i;
+		game->enemy2.y0 = i;
+		game->maps.cnt.r++;
+	}
+}
+
 int	check_comp_isvalid(t_game *game)
 {
 	if (!(0 < game->maps.cnt.p && game->maps.cnt.p <= COMPO_P_MAX))
@@ -64,7 +76,7 @@ int	check_comp_isvalid(t_game *game)
 		return (FALSE);
 	if (!(0 < game->maps.cnt.e && game->maps.cnt.e <= COMPO_E_MAX))
 		return (FALSE);
-	if (!(0 <= game->maps.cnt.r && game->maps.cnt.r <= 1))
+	if (!(0 <= game->maps.cnt.r && game->maps.cnt.r <= COMPO_R_MAX))
 		return (FALSE);
 	return (TRUE);
 }
@@ -82,6 +94,7 @@ void	draw_comp_by_coord(t_game *game)
 		while (j < game->maps.cols)
 		{
 			components_coord(game, i, j);
+			compo_blast_coord(game, i, j);
 			j++;
 		}
 		i++;

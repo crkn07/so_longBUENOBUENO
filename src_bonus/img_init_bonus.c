@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:55:32 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:31:13 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:43:17 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,16 @@ static void	imgplayer_init(t_game *game)
 	ply->imgx[DIR_EAST][2].ptr = ft_xpm_to_img(game, "char_right2.xpm");
 }
 
-static void	imgenemy_init(t_game *game)
+static void	imgenemies_init(t_game *game)
 {
 	game->enemy.imgx[DIR_NORTH][0].ptr = ft_xpm_to_img(game, "enemyback.xpm");
 	game->enemy.imgx[DIR_SOUTH][0].ptr = ft_xpm_to_img(game, "enemyfront.xpm");
 	game->enemy.imgx[DIR_WEST][0].ptr = ft_xpm_to_img(game, "enemyleft.xpm");
 	game->enemy.imgx[DIR_EAST][0].ptr = ft_xpm_to_img(game, "enemyright.xpm");
+	game->enemy2.imgx[DIR_NORTH][0].ptr = ft_xpm_to_img(game, "Blast_back.xpm");
+	game->enemy2.imgx[DIR_SOUTH][0].ptr = ft_xpm_to_img(game, "Blastfront.xpm");
+	game->enemy2.imgx[DIR_WEST][0].ptr = ft_xpm_to_img(game, "Blast_left.xpm");
+	game->enemy2.imgx[DIR_EAST][0].ptr = ft_xpm_to_img(game, "Blast_right.xpm");
 }
 
 static void	init_rest_ofimg(t_game *game)
@@ -60,6 +64,6 @@ void	init_img(t_game *game)
 {
 	rest_imgmap_init(game);
 	imgplayer_init(game);
-	imgenemy_init(game);
+	imgenemies_init(game);
 	init_rest_ofimg(game);
 }

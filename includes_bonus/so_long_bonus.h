@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 20:51:09 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:29:49 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:33:06 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ typedef struct s_coll
 typedef struct s_player
 {
 	t_spr	spr;
-	int		life;
 	int		step;
 	int		item;
 }			t_player;
@@ -110,6 +109,7 @@ typedef struct s_flags
 	int		held_keys;
 	int		player_walk;
 	int		enemy_walk;
+	int		enemy2_walk;
 	int		step_cnt;
 	int		game_scene;
 }			t_flags;
@@ -127,6 +127,7 @@ typedef struct s_game
 	t_coll		collec;
 	t_player	player;
 	t_spr		enemy;
+	t_spr		enemy2;
 	t_coord		dir2coord[5];
 	t_map		maps;
 	t_flags		flag;
@@ -161,15 +162,17 @@ void	clst_clear(t_clst *head);
 
 void	print_map(t_game *game);
 void	init_img(t_game *game);
+void	enemy2_look_player(t_game *game);
 void	print_player(t_game *game);
 void	print_enemy(t_game *game);
+void	print_enemy2(t_game *game);
 void	draw_step_count(t_game *game);
 void	print_covers_change(t_game *game);
 
 void	moments_tester(t_game *game);
 void	enemy_behaviour(t_game *game);
 void	draw_sprites(t_game *game);
-void	init_enemy(t_game *game);
+void	init_enemies(t_game *game);
 
 void	move_dir(t_game *game, t_spr *sprite, int dir);
 void	spin_like_clock(t_spr *sprite);

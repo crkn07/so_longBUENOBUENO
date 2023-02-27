@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:09:39 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:13:52 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:50:01 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	launch_game(t_game *game)
 	launch_window(game);
 	init_dir(game);
 	init_img(game);
-	init_enemy(game);
 	launch_player(game);
 	init_flags(game);
 	game->flag.game_scene = check_game_mode(GAME_MODE);

@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:17:43 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:25:10 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:48:50 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  */
 int	check_comp(char c)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P' || c == 'R')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
 		return (TRUE);
 	return (FALSE);
 }
@@ -93,8 +93,6 @@ int	check_collision(t_game *game, t_spr *sprite, int dir)
 	x = game->dir2coord[dir].x;
 	y = game->dir2coord[dir].y;
 	c = game->maps.coord[sprite->y + y][sprite->x + x];
-	if (c == 'R' && !game->flag.enemy_walk)
-		return (TRUE);
 	if (c == '1')
 		return (TRUE);
 	else if (c == 'E' && !game->flag.collect_all)

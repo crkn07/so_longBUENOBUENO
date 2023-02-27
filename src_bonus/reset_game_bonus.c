@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 13:55:32 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:32:03 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 13:05:33 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	reset_game(t_game *game)
 	init_collectable(game);
 	draw_comp_by_coord(game);
 	launch_player(game);
-	init_enemy(game);
+	init_enemies(game);
 	init_flags(game);
 	return (0);
 }

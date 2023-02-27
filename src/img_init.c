@@ -6,7 +6,7 @@
 /*   By: crtorres <crtorres@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 12:18:32 by crtorres          #+#    #+#             */
-/*   Updated: 2023/02/21 15:25:46 by crtorres         ###   ########.fr       */
+/*   Updated: 2023/02/27 15:49:36 by crtorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,6 @@ static void	imgplayer_init(t_game *game)
 	ply->imgx[DIR_EAST][2].ptr = ft_xpm_to_img(game, "char_right2.xpm");
 }
 
-static void	imgenemy_init(t_game *game)
-{
-	game->enemy.imgx[DIR_NORTH][0].ptr = ft_xpm_to_img(game, "enemyback.xpm");
-	game->enemy.imgx[DIR_SOUTH][0].ptr = ft_xpm_to_img(game, "enemyfront.xpm");
-	game->enemy.imgx[DIR_WEST][0].ptr = ft_xpm_to_img(game, "enemyleft.xpm");
-	game->enemy.imgx[DIR_EAST][0].ptr = ft_xpm_to_img(game, "enemyright.xpm");
-}
-
 static void	init_rest_ofimg(t_game *game)
 {
 	game->opening.ptr = ft_xpm_to_img(game, "opening.xpm");
@@ -60,6 +52,5 @@ void	init_img(t_game *game)
 {
 	rest_imgmap_init(game);
 	imgplayer_init(game);
-	imgenemy_init(game);
 	init_rest_ofimg(game);
 }
